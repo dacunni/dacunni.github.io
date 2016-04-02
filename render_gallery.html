@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+    body {
+        color: white;
+        background: black;
+    }
+
+    #gallery {
+        color: white;
+        background: black;
+        /*border: 3px solid gray;*/
+        width: 100%;
+    }
+    .gallery_entry {
+        color: white;
+        background: black;
+        /*border: 3px solid gray;*/
+        width: 90%;
+        margin: 10px;
+    }
+
+    img.gallery_image {
+        max-width: 50%;
+        border: 1px solid gray;
+    }
+
+</style>
+<body>
+
+<h1>dacunni's renderer gallery</h1>
+
+
+<div id="gallery">
+</div>
+
+
+</body>
+
+<script>
+
+var renders = [
+{ title: "Ambient occlusion bunny", image: "bunny_ao1.png"},
+{ title: "Render time visualization", image: "bunny_ao1_time.png"},
+{ title: "Another AO bunny", image: "test_ao5_framebuffer_00000001.png"},
+{ title: "Ambient occlusion bunny flythrough", image: "bunny_ao_flythrough1.gif"},
+{ title: "Ambient occlusion dragon and shapes", image: "dragon_ao1.png"},
+{ title: "Hairball", image: "test_hairball_framebuffer_00000001.png"},
+{ title: "Mirror and diffuse surfaces", image: "test_point_light4_framebuffer_00000001.png"},
+{ title: "Mirror bunny and shapes", image: "test_reflect3_framebuffer_00000001.png"},
+{ title: "Lunar lander: Used multipart mesh loading", image: "lunar_lander.png"},
+{ title: "Object transforms", image: "anim_spinning_cubes1.gif"},
+{ title: "Object transforms", image: "anim_mirror_bunny_spin.gif"},
+];
+
+var gallery = document.getElementById("gallery");
+
+
+for( i = 0; i < renders.length; i++ ) {
+
+    render = renders[i];
+    image = "render_gallery/" + render.image;
+
+    gallery.innerHTML += "<div class='gallery_entry'>"
+                         + "<a href='" + image + "'>"
+                         + "<img class='gallery_image' src='" + image + "' />"
+                         + "</a>"
+                         //+ "<br/>"
+                         + "<span style=width='90%'>"
+                         + render.title
+                         + "</span>"
+                         + "</div>";
+
+}
+
+
+
+</script>
+
+</html>
+
