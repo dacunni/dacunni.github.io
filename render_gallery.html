@@ -3,28 +3,35 @@
 
 <style>
     body {
-        color: white;
-        background: black;
+        color: black;
+        background: white;
     }
 
     #gallery {
-        color: white;
-        background: black;
-        /*border: 3px solid gray;*/
         width: 100%;
     }
+    .section_heading {
+        font-size: 30px;
+        width: 90%;
+        margin: 10px;
+    }
+
     .gallery_entry {
-        color: white;
-        background: black;
-        /*border: 3px solid gray;*/
+        width: 90%;
+        margin: 10px;
+    }
+
+    .gallery_label {
+        color: black;
         width: 90%;
         margin: 10px;
     }
 
     img.gallery_image {
         /*max-width: 50%;*/
-        max-width: 200px;
-        border: 1px solid gray;
+        max-width: 300px;
+        border: 1px solid #000000;
+        box-shadow: 10px 10px 10px #000000;
     }
 
 </style>
@@ -41,7 +48,10 @@
 
 <script>
 
+gallery.innerHTML += "<div class='section_heading'>Scenes</div>";
+
 var renders = [
+{ title: "Refractive bunnies", image: "refract_bunnies1.png"},
 { title: "San Miguel", image: "san_miguel1.png"},
 { title: "San Miguel (normals)", image: "san_miguel1_normals.png"},
 { title: "Mirror and diffuse surfaces", image: "test_point_light4_framebuffer_00000001.png"},
@@ -60,7 +70,6 @@ var renders = [
 
 var gallery = document.getElementById("gallery");
 
-
 for( i = 0; i < renders.length; i++ ) {
 
     render = renders[i];
@@ -71,11 +80,42 @@ for( i = 0; i < renders.length; i++ ) {
                          + "<img class='gallery_image' src='" + image + "' />"
                          + "</a>"
                          //+ "<br/>"
-                         + "<span style=width='90%'>"
+                         + "<div class='gallery_label'>"
                          + render.title
+                         + "</div>"
+                         + "</div>";
+}
+
+gallery.innerHTML += "<div class='section_heading'>Materials</div>";
+
+var material_tests = [
+{ image: "MaterialTestAmbientOcclusion_framebuffer_00000001.png"},
+{ image: "MaterialTestDiffuseWhiteArcLight_framebuffer_00000001.png"},
+{ image: "MaterialTestDiffuseWhiteHDREnvironmentMap_framebuffer_00000001.png"},
+{ image: "MaterialTestDiffuseWhitePointLight_framebuffer_00000001.png"},
+{ image: "MaterialTestDiffuseWhite_framebuffer_00000001.png"},
+{ image: "MaterialTestMirrorArcLight_framebuffer_00000001.png"},
+{ image: "MaterialTestMirrorHDREnvironmentMap_framebuffer_00000001.png"},
+{ image: "MaterialTestMirrorPointLight_framebuffer_00000001.png"},
+{ image: "MaterialTestRefractDiamondArcLight_framebuffer_00000001.png"},
+{ image: "MaterialTestRefractPointLight_framebuffer_00000001.png"},
+{ image: "MaterialTestRefractWaterArcLight_framebuffer_00000001.png"},
+];
+
+for( i = 0; i < material_tests.length; i++ ) {
+
+    render = material_tests[i];
+    image = "render_gallery/materials/" + render.image;
+
+    gallery.innerHTML += "<div class='gallery_entry'>"
+                         + "<a href='" + image + "'>"
+                         + "<img class='gallery_image' src='" + image + "' />"
+                         + "</a>"
+                         //+ "<br/>"
+                         + "<span style=width='90%'>"
+                         //+ render.title
                          + "</span>"
                          + "</div>";
-
 }
 
 
