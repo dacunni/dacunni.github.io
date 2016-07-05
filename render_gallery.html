@@ -47,6 +47,7 @@
 </body>
 
 <script>
+var gallery = document.getElementById("gallery");
 
 gallery.innerHTML += "<div class='section_heading'>Scenes</div>";
 
@@ -67,8 +68,6 @@ var renders = [
 { title: "Ambient occlusion bunny flythrough", image: "bunny_ao_flythrough1.gif"},
 { title: "Ambient occlusion dragon and shapes", image: "dragon_ao1.png"},
 ];
-
-var gallery = document.getElementById("gallery");
 
 for( i = 0; i < renders.length; i++ ) {
 
