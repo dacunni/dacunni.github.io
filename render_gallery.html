@@ -12,44 +12,53 @@
     }
     .section_heading {
         font-size: 30px;
-        width: 90%;
+        width: 100%;
         margin: 10px;
     }
 
     .gallery_entry {
-        width: 90%;
+        float: left;
+        /*max-width: 420px;
+        /*max-height: 250px;*/
         margin: 10px;
+        border: 1px solid #000000;
+        box-shadow: 5px 5px 5px #888888;
     }
 
     .gallery_label {
+        max-width: 190px;
         color: black;
-        width: 90%;
-        margin: 10px;
+        /*width: 200px;*/
+        height: 30px;
+        margin: 5px;
     }
 
     img.gallery_image {
-        /*max-width: 50%;*/
-        max-width: 300px;
+        max-width: 400px;
+        max-height: 200px;
+        margin: 5px;
         border: 1px solid #000000;
-        box-shadow: 10px 10px 10px #000000;
+        /*box-shadow: 10px 10px 10px #000000;*/
     }
 
 </style>
 <body>
 
-<h1>dacunni's renderer gallery</h1>
+<h1>David Cunningham's Renderer Gallery</h1>
 
+These are sample renderings from my personal <a href="https://github.com/dacunni/FastRender">ray tracer</a> project. Click images to view them at their full resolution.
+
+<br><br>
 
 <div id="gallery">
 </div>
-
 
 </body>
 
 <script>
 var gallery = document.getElementById("gallery");
 
-gallery.innerHTML += "<div class='section_heading'>Scenes</div>";
+//gallery.innerHTML += "<div class='section_heading'>Scenes</div>";
 
 var renders = [
 { title: "Refractive bunnies", image: "refract_bunnies1.png"},
@@ -59,7 +68,7 @@ var renders = [
 { title: "San Miguel (normals)", image: "san_miguel1_normals.png"},
 { title: "Mirror and diffuse surfaces", image: "test_point_light4_framebuffer_00000001.png"},
 { title: "Mirror bunny and shapes", image: "test_reflect3_framebuffer_00000001.png"},
-{ title: "Lunar lander: Used multipart mesh loading", image: "lunar_lander.png"},
+{ title: "Lunar lander: Multipart mesh test case", image: "lunar_lander.png"},
 { title: "Hairball", image: "test_hairball_framebuffer_00000001.png"},
 { title: "Area light caustic", image: "area_light_caustic1.png"},
 { title: "Object transforms", image: "anim_spinning_cubes1.gif"},
@@ -76,18 +85,21 @@ for( i = 0; i < renders.length; i++ ) {
     render = renders[i];
     image = "render_gallery/" + render.image;
 
+    if( render.title === undefined ) {
+        render.title = "";
+    }
+
     gallery.innerHTML += "<div class='gallery_entry'>"
                          + "<a href='" + image + "'>"
                          + "<img class='gallery_image' src='" + image + "' />"
                          + "</a>"
-                         //+ "<br/>"
                          + "<div class='gallery_label'>"
                          + render.title
                          + "</div>"
                          + "</div>";
 }
 
-gallery.innerHTML += "<div class='section_heading'>Materials</div>";
+//gallery.innerHTML += "<div class='section_heading'>Materials</div>";
 
 var material_tests = [
 { image: "MaterialTestAmbientOcclusion_framebuffer_00000001.png"},
@@ -108,14 +120,17 @@ for( i = 0; i < material_tests.length; i++ ) {
     render = material_tests[i];
     image = "render_gallery/materials/" + render.image;
 
+    if( render.title === undefined ) {
+        render.title = "";
+    }
+
     gallery.innerHTML += "<div class='gallery_entry'>"
                          + "<a href='" + image + "'>"
                          + "<img class='gallery_image' src='" + image + "' />"
                          + "</a>"
-                         //+ "<br/>"
-                         + "<span style=width='90%'>"
-                         //+ render.title
-                         + "</span>"
+                         + "<div class='gallery_label'>"
+                         + render.title
+                         + "</div>"
                          + "</div>";
 }
 
