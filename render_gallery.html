@@ -89,15 +89,16 @@ var renders = [
 for( i = 0; i < renders.length; i++ ) {
 
     render = renders[i];
-    image = "render_gallery/" + render.image;
+    //image = "render_gallery/" + render.image;
+    image = render.image;
 
     if( render.title === undefined ) {
         render.title = "";
     }
 
     gallery.innerHTML += "<div class='gallery_entry'>"
-                         + "<a href='" + image + "'>"
-                         + "<img class='gallery_image' src='" + image + "' />"
+                         + "<a href='render_gallery/" + image + "'>"
+                         + "<img class='gallery_image' src='render_gallery/thumbnails/" + image + "' />"
                          + "</a>"
                          + "<div class='gallery_label'>"
                          + render.title
