@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+    body {
+        color: #444444;
+        background: #EEEEEE;
+        font-family: Papyrus;
+    }
+
+    a:link { color: #8888FF; }
+    a:visited { color: #6666CC; }
+
+    #gallery {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 33% 33% 33%;
+    }
+
+    .gallery_entry {
+        margin: 10px;
+    }
+
+    .gallery_label {
+        max-width: 190px;
+        color: black;
+        margin: 5px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    img.gallery_image {
+        max-width: 100%;
+        max-height: 100%;
+        margin: 10px;
+        border: 1px solid #000000;
+        box-shadow: 4px 4px 4px #000000;
+        border-radius: 25px;
+    }
+
+</style>
+<body>
+
+<h1>David Cunningham's Renderer Gallery</h1>
+
+These are sample renderings from <a href="https://github.com/dacunni/fluxrt">fluxrt</a>, my personal ray tracer project. Click images to view them at their full resolution.
+
+<br><br>
+
+<div id="gallery">
+</div>
+
+</body>
+
+<script>
+var gallery = document.getElementById("gallery");
+
+var renders = [
+{ title: "Refraction + Beer's Law attenuation", image: "blue_dachshund.png"},
+{ title: "", image: "mori_saintpeters_d5_1000spp_4xbrighter.png"},
+{ title: "", image: "sports_car_envmap_d2_100spp.png"},
+{ title: "", image: "sports_car_rear_1000spp.png"},
+{ title: "", image: "suzanne_diffuse_envmap.png"},
+{ title: "", image: "suzanne_glossy_envmap.png"},
+];
+
+
+for( i = 0; i < renders.length; i++ ) {
+    render = renders[i];
+    image = render.image;
+
+    if( render.title === undefined ) {
+        render.title = "";
+    }
+
+    gallery.innerHTML += "<div class='gallery_entry'>"
+                         + "<a href='render_gallery/" + image + "'>"
+                         + "<img class='gallery_image' src='render_gallery/thumbnails/" + image + "' />"
+                         + "</a>"
+                         + "<div class='gallery_label'>"
+                         + render.title
+                         + "</div>"
+                         + "</div>";
+}
+
+</script>
+
+</html>
+
