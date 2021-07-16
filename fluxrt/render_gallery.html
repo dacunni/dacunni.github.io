@@ -11,10 +11,16 @@
     a:link { color: #8888FF; }
     a:visited { color: #6666CC; }
 
-    #gallery {
+    #render_gallery {
         width: 100%;
         display: grid;
         grid-template-columns: 33% 33% 33%;
+    }
+
+    #material_gallery {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 50% 50%;
     }
 
     .gallery_entry {
@@ -48,22 +54,34 @@ These are sample renderings from <a href="https://github.com/dacunni/fluxrt">flu
 
 <br><br>
 
-<div id="gallery">
+<div id="render_gallery">
+</div>
+
+<div id="material_gallery">
 </div>
 
 </body>
 
 <script>
-var gallery = document.getElementById("gallery");
+var render_gallery = document.getElementById("render_gallery");
+var material_gallery = document.getElementById("material_gallery");
 
 var renders = [
-{ title: "Refraction + Beer's Law attenuation", image: "blue_dachshund.png"},
+{ title: "Refraction + Beer's Law Attenuation", image: "blue_dachshund.png"},
 { title: "", image: "mori_saintpeters_d5_1000spp_4xbrighter.png"},
 { title: "", image: "salle_de_bain_1000spp.png"},
 { title: "", image: "sports_car_envmap_d2_100spp.png"},
 { title: "", image: "sports_car_rear_1000spp.png"},
 { title: "", image: "suzanne_diffuse_envmap.png"},
 { title: "", image: "suzanne_glossy_envmap.png"},
+];
+
+var materials = [
+{ title: "Diffuse: Black to White", image: "diffuse_black_white_gallery.png"},
+{ title: "Diffuse to Specular", image: "specular_coefficient_gallery.png"},
+{ title: "Specular Exponent", image: "specular_exponent_gallery.png"},
+{ title: "Index of Refraction", image: "refractive_ior_gallery.png"},
+{ title: "Beer's Law Attenuation", image: "beers_law_gallery.png"},
 ];
 
 
@@ -75,9 +93,29 @@ for( i = 0; i < renders.length; i++ ) {
         render.title = "";
     }
 
-    gallery.innerHTML += "<div class='gallery_entry'>"
+    render_gallery.innerHTML
+                        += "<div class='gallery_entry'>"
                          + "<a href='render_gallery/" + image + "'>"
                          + "<img class='gallery_image' src='render_gallery/thumbnails/" + image + "' />"
+                         + "</a>"
+                         + "<div class='gallery_label'>"
+                         + render.title
+                         + "</div>"
+                         + "</div>";
+}
+
+for( i = 0; i < materials.length; i++ ) {
+    render = materials[i];
+    image = render.image;
+
+    if( render.title === undefined ) {
+        render.title = "";
+    }
+
+    material_gallery.innerHTML
+                        += "<div class='gallery_entry'>"
+                         + "<a href='material_gallery/" + image + "'>"
+                         + "<img class='gallery_image' src='material_gallery/thumbnails/" + image + "' />"
                          + "</a>"
                          + "<div class='gallery_label'>"
                          + render.title

@@ -1,6 +1,8 @@
 #!/bin/bash
 
 cp render_gallery/*.{gif,png} render_gallery/thumbnails/
-#mogrify -resize 256x256^ render_gallery/thumbnails/*
 sips -Z 256 render_gallery/thumbnails/*
+
+cp material_gallery/*.{gif,png} material_gallery/thumbnails/
+sips -Z 512 material_gallery/thumbnails/*
 
